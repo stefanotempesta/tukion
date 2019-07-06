@@ -234,3 +234,5 @@ Currently, aspects of high availability, disaster recovery, API management, cach
 - Switch to a GraphQL query language for the API.
 - Move data binding to the client side for a SPA experience.
 - Introduce exception handling, logging, event handling.
+- Write unit, system, integrations, performance and security tests.
+- Automate deployment (provisioning of infrastructure, build, testing and publishing of the solution).

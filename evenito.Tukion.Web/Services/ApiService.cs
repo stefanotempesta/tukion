@@ -1,4 +1,4 @@
-﻿using evenito.Tukion.Web.Models;
+﻿using evenito.Tukion.Server.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace evenito.Tukion.Web.Services
             //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
         }
 
-        public async Task<IEnumerable<Video>> GetVideos()
+        public async Task<IEnumerable<VideoModel>> GetVideos()
         {
             var message = await client.GetAsync("api/videos");
             if (!message.IsSuccessStatusCode)
@@ -30,7 +30,7 @@ namespace evenito.Tukion.Web.Services
             }
 
             string response = await message.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<IEnumerable<Video>>(response);
+            return JsonConvert.DeserializeObject<IEnumerable<VideoModel>>(response);
         }
 
         public void Dispose()

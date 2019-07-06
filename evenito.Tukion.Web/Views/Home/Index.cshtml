@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Video>
+﻿@model IEnumerable<evenito.Tukion.Server.Models.VideoModel>
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,14 +9,36 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th></th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Id)
+                        Title
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Title)
+                        Description
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Duration)
+                        Duration
+                    </th>
+                    <th>
+                        Tags
+                    </th>
+                    <th>
+                        View Count
+                    </th>
+                    <th>
+                        Reactions
+                    </th>
+                    <th>
+                        Favourite Count
+                    </th>
+                    <th>
+                        Comment Count
+                    </th>
+                    <th>
+                        Channel Title
+                    </th>
+                    <th>
+                        
                     </th>
                     <th></th>
                 </tr>
@@ -24,22 +46,45 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Title)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Duration)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Add to List", "AddToList", new { id = item.Id })
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        <img src="@item.Video.ThumbnailURL" title="@item.Video.Title"/>
+                    </td>
+                    <td>
+                        <a href="@item.Video.ContentURL">@Html.DisplayFor(modelItem => item.Video.Title)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Video.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationString)
+                    </td>
+                    <td>
+                        @String.Join(",", item.Tags.Select(t => t.Name))
+                    </td>
+                    <td>
+                        @item.Views.Count()
+                    </td>
+                    <td>
+                        @item.Reactions.Count(r => r.Type == evenito.Tukion.Server.Entities.ReactionType.Like) likes<br/>
+                        @item.Reactions.Count(r => r.Type == evenito.Tukion.Server.Entities.ReactionType.Dislike) dislikes
+                    </td>
+                    <td>
+                        @item.Favourites.Count()
+                    </td>
+                    <td>
+                        @item.Comments.Count()
+                    </td>
+                    <td>
+                        @String.Join(",", item.Channels.Select(c => c.Title))
+                    </td>
+                    <td>
+                        @Html.ActionLink("Add to List", "AddToList", new { id = item.Video.Id }, new { @class = "btn btn-light" })
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
     </p>
 </div>
+

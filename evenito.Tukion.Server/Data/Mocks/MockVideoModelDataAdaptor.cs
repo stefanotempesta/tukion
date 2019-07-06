@@ -11,7 +11,6 @@ namespace evenito.Tukion.Server.Data.Mocks
     {
         public void Dispose()
         {
-            throw new NotImplementedException();
         }
 
         public IEnumerable<VideoModel> LoadAll()
@@ -31,8 +30,8 @@ namespace evenito.Tukion.Server.Data.Mocks
             {
                 Video = video,
                 Owner = Users.SingleOrDefault(u => u.Id == video.OwnerId),
-                Channels = Channels.Where(c => ChannelVideos.Select(v => v.VideoId).Contains(video.Id)),
-                Tags = Tags.Where(t => VideoTags.Select(v => v.VideoId).Contains(video.Id)),
+                Channels = Channels.Where(c => ChannelVideos.Where(v => v.VideoId == video.Id).Select(v => v.ChannelId).Contains(c.Id)),
+                Tags = Tags.Where(t => VideoTags.Where(v => v.VideoId == video.Id).Select(v => v.TagId).Contains(t.Id)),
                 Views = Views.Where(v => v.VideoId == video.Id),
                 Reactions = Reactions.Where(r => r.VideoId == video.Id),
                 Favourites = Favourites.Where(f => f.VideoId == video.Id),
@@ -79,7 +78,7 @@ namespace evenito.Tukion.Server.Data.Mocks
                 Duration = 582,
                 Visibility = VideoVisibility.Public,
                 ContentURL = new Uri("https://www.youtube.com/watch?v=CN3v4fEZcQw"),
-                ThumbnailURL = new Uri("https://www.youtube.com/watch?v=CN3v4fEZcQw")
+                ThumbnailURL = new Uri("http://i1.ytimg.com/vi/CN3v4fEZcQw/default.jpg")
             },
             new Video
             {
@@ -91,7 +90,7 @@ namespace evenito.Tukion.Server.Data.Mocks
                 Duration = 897,
                 Visibility = VideoVisibility.Public,
                 ContentURL = new Uri("https://www.youtube.com/watch?v=RplnSVTzvnU"),
-                ThumbnailURL = new Uri("https://www.youtube.com/watch?v=RplnSVTzvnU")
+                ThumbnailURL = new Uri("http://i1.ytimg.com/vi/RplnSVTzvnU/default.jpg")
             },
             new Video
             {
@@ -103,7 +102,7 @@ namespace evenito.Tukion.Server.Data.Mocks
                 Duration = 183,
                 Visibility = VideoVisibility.Public,
                 ContentURL = new Uri("https://www.youtube.com/watch?v=nOIJ4b1L3_I"),
-                ThumbnailURL = new Uri("https://www.youtube.com/watch?v=nOIJ4b1L3_I")
+                ThumbnailURL = new Uri("http://i1.ytimg.com/vi/nOIJ4b1L3_I/default.jpg")
             }
         };
 

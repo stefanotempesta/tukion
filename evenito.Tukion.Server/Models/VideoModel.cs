@@ -22,5 +22,8 @@ namespace evenito.Tukion.Server.Models
         public IEnumerable<Comment> Comments { get; set; }
 
         public IEnumerable<Channel> Channels { get; set; }
+
+        // Format duration as HH:MM:SS
+        public string DurationString => $"{(Video.Duration / 3600):00}:{(Video.Duration % 3600 / 60):00}:{(Video.Duration % 3600 % 60):00}";
     }
 }

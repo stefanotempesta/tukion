@@ -21,14 +21,14 @@ namespace evenito.Tukion.API.Controllers
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<VideoModel> Get()
+        public ActionResult<IEnumerable<VideoModel>> Get()
         {
-            return _dataAdaptor.LoadAll();
+            return _dataAdaptor.LoadAll().ToList();
         }
 
         // GET api/values/<guid>
         [HttpGet("{id}")]
-        public VideoModel Get(Guid id)
+        public ActionResult<VideoModel> Get(Guid id)
         {
             return _dataAdaptor.Load(id);
         }

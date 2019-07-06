@@ -2,7 +2,7 @@
 
 ## Architecture Design
 The solution is structured as a multi-tier application implementing a clear separation of concerns between presentation, service and data access layers.
-![Architecture Design](https://github.com/stefanotempesta/tukion/docs/ArchitectureDesign.png)
+![Architecture Diagram](https://github.com/stefanotempesta/tukion/docs/ArchitectureDiagram.png)
 
 This Visual Studio solution consists of the following projects:
 - evenito.Tukion.Web: ASP.NET Core MVC frontend

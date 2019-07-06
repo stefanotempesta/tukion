@@ -1,8 +1,8 @@
 # Tukion
 
 ## Architecture Design
-The solution is structured as a multi-tier application implementing a clear separation of concerns between presentation, service and data access layers.
-![Architecture Diagram](https://github.com/stefanotempesta/tukion/docs/ArchitectureDiagram.png)
+The solution is structured as a multi-tier application implementing a clear separation of concerns between presentation, service and data access layers.\
+![Architecture Diagram](https://github.com/stefanotempesta/tukion/blob/master/docs/ArchitectureDiagram.png)
 
 This Visual Studio solution consists of the following projects:
 - evenito.Tukion.Web: ASP.NET Core MVC frontend
@@ -165,7 +165,7 @@ The Server project defines the following entities:
 - View
 
 #### Entity Class Diagram
-![Entity Class Diagram](https://github.com/stefanotempesta/tukion/docs/EntityClassDiagram.png)
+![Entity Class Diagram](https://github.com/stefanotempesta/tukion/blob/master/docs/EntityClassDiagram.png)
 
 #### Data > IDataAdaptor.cs
 The IDataAdaptor interface describes the CRUD methods for the data access layer.
